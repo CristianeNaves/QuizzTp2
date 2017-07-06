@@ -1,5 +1,5 @@
 module Quizz
-  
+  puts "oi"
   def  create_quiz(nome_quizz, perguntas)
     if self.admin?
       nome = nome_quizz + '.txt'
