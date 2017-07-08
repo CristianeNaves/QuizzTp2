@@ -17,7 +17,7 @@ RSpec.describe Usuario do
 
 	describe "#cadastrar" do
 		it 'passo usuario já existente e espero que falhe' do
-			expect(@user.cadastrar "123", "123", "Cris", false).to be false
+	cadastrar		expect(@user.cadastrar "123", "123", "Cris", false).to be false
 		end
 		it 'passo usuario não existente e espero que cadastre' do
 			expect(@user.cadastrar "12", "12", "Cris", false).to be true
