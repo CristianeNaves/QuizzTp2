@@ -331,10 +331,10 @@ else
   nome = gets.chomp
   puts 'O usuario eh admin? (S ou N):'
   perf = gets.chomp
-  while perf != 'S' && perf != 'N'
-    puts 'Opcao invalida, digite novamente o perfil do usuario (S ou N): '
-    perf = gets.chomp
-  end
+  #while perf != 'S' && perf != 'N'
+  #  puts 'Opcao invalida, digite novamente o perfil do usuario (S ou N): '
+  #  perf = gets.chomp
+  #end
   if perf == 'S'
     new_perf = true
   else
