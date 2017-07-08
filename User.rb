@@ -1,10 +1,15 @@
 require_relative './Disciplinas.rb'
 require_relative './Quizz.rb'
+require_relative './Autenticacao.rb'
+
 
 class Usuario
-  extend Disciplina
-  extend Quizz
-  attr_accessor :disciplinas, :nome, :id, :score
+  include Disciplina
+  include Quizz
+  include Autenticacao
+  
+  attr_accessor :disciplinas, :nome, :id, :score, :login, :perfil
+  
   def initialize
     @disciplinas = []
     @score = 0
@@ -13,66 +18,8 @@ class Usuario
   def admin?
     @perfil
   end
-
-  # Recebe os parametros do objeto Usuario, testa se o dado usuario
-  # esta presente no arquivo da lista de usuarios
-  # Caso o usuario ja exista na lista o metodo retorna false
-  # Caso nao exista, o usuario eh adicionado ao arquivo de lista dos
-  # usuarios e o metodo retorna true
-  def cadastrar(login, senha, nome, perfil)
-    if File.exist?('usuarios.txt')
-      lines = File.readlines('usuarios.txt')
-      #line_count = lines.size - 1
-      #(0..line_count).each do |i|
-      lines.each do |line|
-        info = line.split
-        if login == info[1]
-          puts 'Usuario ja existente.'
-          return false
-        end
-      end
-    end
-    @login = login
-    @senha = senha
-    @nome = nome
-    @perfil = perfil
-    @disciplinas = []
-    if File.exist?('usuarios.txt')
-      num_usuarios = File.readlines('usuarios.txt').size
-    else
-      num_usuarios = 0
-    end
-    @id = num_usuarios
-    File.open('usuarios.txt', 'a+') do |file|
-      file.write("#{@id}\t#{login}\t#{senha}\t#{nome}\t"\
-                 "#{perfil}\t#{disciplinas}\n")
-    end
-    return true
-  end
-  # Recebe o login do usuario e senha
-  # Testa se o arquivo de lista de usuarios existe
-  # testa se o usuario esta presente na lista
-  # Se o usuario e a senha forem encontrados, os dados do usuario
-  # sao lidos do arquivo do usuario para a memoria do programa e retorna true
-  # Caso contrario, retorna false
-  def logar(log, pass)
-    if File.exist?('usuarios.txt')
-      lines = File.readlines('usuarios.txt')
-      lines.each do |line|
-        info = line.split
-        if log == info[1] && pass == info[2]
-          @id = info[0]
-          @login = info[1]
-          @senha = info[2]
-          @nome = info[3]
-          @perfil = info[4]
-          @disciplinas = info[5]
-          return true
-        end
-    end
-    return false
-  end
 end
+
 # main
 user = Usuario.new
 puts "Selecione a opcao desejada:\n1 - Efetuar login\n2 - Efetuar cadastro"
@@ -181,5 +128,4 @@ else
     new_perf = false
   end
   user.cadastrar login, senha, nome, new_perf
-end
 end
