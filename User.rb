@@ -183,10 +183,11 @@ class Usuario
   def cadastrar(login, senha, nome, perfil)
     if File.exist?('usuarios.txt')
       lines = File.readlines('usuarios.txt')
-      line_count = lines.size - 1
-      (0..line_count).each do |i|
-        info = lines[i].split
-        if login == info[0]
+      #line_count = lines.size - 1
+      #(0..line_count).each do |i|
+      lines.each do |line|
+        info = line.split
+        if login == info[1]
           puts 'Usuario ja existente.'
           return false
         end

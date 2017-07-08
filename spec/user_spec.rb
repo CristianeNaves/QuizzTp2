@@ -1,9 +1,9 @@
 require '../User'
 RSpec.describe Usuario do
-	before(:example) do
+	before(:all) do
 		@user = Usuario.new
-		@user.cadastrar "1234", "1234", "Cris", true
-		@user.cadastrar "123", "123", "Cris", false
+		@user.cadastrar 1234, 1234, "Cris", true
+		@user.cadastrar 123, 123, "Cris", false
 	end
 	describe "#logar" do
 		it 'passo log e senha e espero que falhe' do
