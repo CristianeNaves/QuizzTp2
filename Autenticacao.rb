@@ -54,7 +54,11 @@ module Autenticacao
           self.id = info[0]
           self.login = info[1]
           self.nome = info[3]
-          self.perfil = info[4]
+          if info[4] == "true"
+          self.perfil = true
+          else
+            self.perfil = false
+          end  
           self.disciplinas = info[5]
           return true
         end
