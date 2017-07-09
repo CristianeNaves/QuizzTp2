@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Quizz - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-acessar_quiz">#acessar_quiz</a>
+    
+    <li ><a href="#method-i-create_quiz">#create_quiz</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Quizz">
+  <h1 id="module-Quizz" class="module">
+    module Quizz
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-acessar_quiz" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">acessar_quiz</span><span
+            class="method-args">(nome)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="acessar_quiz-source">
+            <pre><span class="ruby-comment"># File Quizz.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">acessar_quiz</span>(<span class="ruby-identifier">nome</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">nome</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;.txt&#39;</span>)
+    <span class="ruby-identifier">lines</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">nome</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;.txt&#39;</span>, <span class="ruby-string">&#39;r+&#39;</span>)
+    <span class="ruby-identifier">line_count</span> = <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;Iniciando Quiz&#39;</span>
+    <span class="ruby-comment"># conta o score do usuario</span>
+    <span class="ruby-identifier">score</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">infor</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;-&#39;</span>)
+      <span class="ruby-comment"># questão sem ser de multipla escolha </span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&#39;1&#39;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;-&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;: &quot;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;Resposta: &#39;</span>
+        <span class="ruby-identifier">resposta</span> = <span class="ruby-identifier">gets</span>.<span class="ruby-identifier">chomp</span>
+        <span class="ruby-identifier">resposta</span> = <span class="ruby-identifier">resposta</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">resposta</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">3</span>]
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;Resposta correta&#39;</span>
+          <span class="ruby-identifier">score</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">to_i</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;Resposta errada&#39;</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-comment"># resposta de multipla escolha  </span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;-&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;: &#39;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;A - &#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;B - &#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;C - &#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">5</span>].<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;Resposta: &#39;</span>
+        <span class="ruby-identifier">resposta</span> = <span class="ruby-identifier">gets</span>.<span class="ruby-identifier">chomp</span>
+        <span class="ruby-identifier">resposta</span> = <span class="ruby-identifier">resposta</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword">if</span> ((<span class="ruby-identifier">resposta</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;A&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">resposta</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;a&quot;</span>) <span class="ruby-operator">&amp;&amp;</span> ((<span class="ruby-identifier">infor</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">casecmp</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">6</span>].<span class="ruby-identifier">to_s</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>))
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Resposta correta&quot;</span>
+          <span class="ruby-identifier">score</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">7</span>].<span class="ruby-identifier">to_i</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-keyword">if</span> ((<span class="ruby-identifier">resposta</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;B&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">resposta</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;b&quot;</span>) <span class="ruby-operator">&amp;&amp;</span> ((<span class="ruby-identifier">infor</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">casecmp</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">6</span>].<span class="ruby-identifier">to_s</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>))
+            <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Resposta correta&quot;</span>
+            <span class="ruby-identifier">score</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">7</span>].<span class="ruby-identifier">to_i</span>
+          <span class="ruby-keyword">else</span> 
+            <span class="ruby-keyword">if</span> ((<span class="ruby-identifier">resposta</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;C&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">resposta</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;c&quot;</span>) <span class="ruby-operator">&amp;&amp;</span> ((<span class="ruby-identifier">infor</span>[<span class="ruby-value">5</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">casecmp</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">6</span>].<span class="ruby-identifier">to_s</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>))
+              <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Resposta correta&quot;</span>
+              <span class="ruby-identifier">score</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">infor</span>[<span class="ruby-value">7</span>].<span class="ruby-identifier">to_i</span>
+            <span class="ruby-keyword">else</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Resposta errada&quot;</span>
+            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Quiz nao existe&quot;</span>
+  <span class="ruby-keyword">end</span>
+    <span class="ruby-comment"># adiciona esse score para o usuario atual</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">score</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">score</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">score</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Score final: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">score</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-create_quiz" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_quiz</span><span
+            class="method-args">(nome_quizz, perguntas)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_quiz-source">
+            <pre><span class="ruby-comment"># File Quizz.rb, line 2</span>
+<span class="ruby-keyword">def</span>  <span class="ruby-identifier">create_quiz</span>(<span class="ruby-identifier">nome_quizz</span>, <span class="ruby-identifier">perguntas</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">admin?</span>
+    <span class="ruby-identifier">nome</span> = <span class="ruby-identifier">nome_quizz</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;.txt&#39;</span>
+    <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">nome</span>, <span class="ruby-string">&#39;a+&#39;</span>)
+    <span class="ruby-identifier">perguntas</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pergunta</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">file</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">pergunta</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">file</span>.<span class="ruby-identifier">close</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://rdoc.github.io/rdoc">RDoc</a> 5.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
