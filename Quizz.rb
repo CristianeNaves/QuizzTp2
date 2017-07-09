@@ -23,7 +23,7 @@ module Quizz
         if infor[0] == '1'
           puts infor[1].to_s + '-' + infor[2].to_s + ": "
           puts 'Resposta: '
-          resposta = gets.chomp
+          resposta = STDIN.gets.chomp
           resposta = resposta.to_s
           if resposta == infor[3]
             puts 'Resposta correta'
@@ -38,7 +38,7 @@ module Quizz
           puts 'B - ' + infor[4].to_s
           puts 'C - ' + infor[5].to_s
           puts 'Resposta: '
-          resposta = gets.chomp
+          resposta = STDIN.gets.chomp
           resposta = resposta.to_s
           if ((resposta == "A" || resposta == "a") && ((infor[3].to_s.casecmp infor[6].to_s) == 0))
             puts "Resposta correta"

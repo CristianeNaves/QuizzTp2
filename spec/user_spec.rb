@@ -1,5 +1,6 @@
-require '../User'
-
+require 'simplecov'
+SimpleCov.start
+require 'spec_helper'
 RSpec.describe Usuario do
 	before(:all) do
 		@user = Usuario.new
