@@ -25,8 +25,10 @@ module Disciplina
         linha_nova[5] = nova_disciplina
         linha_nova = linha_nova.join(' ') + "\n"
         substituir_linha linha_antiga, linha_nova
-      end
+        return true
+      end  
     end
+    return false
   end
 
   # substitui uma linha por outro no arquivo Usuarios.txt
@@ -48,8 +50,8 @@ module Disciplina
         return true
       end
       file.close
-      return false
     end
+    return false
   end
 
   # faz a procura de uma disciplina e retorna se a mesma

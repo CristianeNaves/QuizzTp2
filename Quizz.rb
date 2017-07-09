@@ -54,15 +54,17 @@ module Quizz
               else
                 puts "Resposta errada"
               end
+            end
           end
         end
       end
-    end
     else
       puts "Quiz nao existe"
+      return false
     end
       # adiciona esse score para o usuario atual
       self.score = self.score + score
       puts "Score final: " + score.to_s
+      return true
   end
 end
