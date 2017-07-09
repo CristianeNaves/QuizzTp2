@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Autenticacao - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-cadastrar">#cadastrar</a>
+    
+    <li ><a href="#method-i-existe_usuario-3F">#existe_usuario?</a>
+    
+    <li ><a href="#method-i-gerarID">#gerarID</a>
+    
+    <li ><a href="#method-i-logar">#logar</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Autenticacao">
+  <h1 id="module-Autenticacao" class="module">
+    module Autenticacao
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-cadastrar" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">cadastrar</span><span
+            class="method-args">(login, senha, nome, perfil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recebe os parametros do objeto <a href="Usuario.html">Usuario</a>, testa se
+o dado usuario esta presente no arquivo da lista de usuarios Caso o usuario
+ja exista na lista o metodo retorna false Caso nao exista, o usuario eh
+adicionado ao arquivo de lista dos usuarios e o metodo retorna true</p>
+          
+          
+
+          
+          <div class="method-source-code" id="cadastrar-source">
+            <pre><span class="ruby-comment"># File Autenticacao.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cadastrar</span>(<span class="ruby-identifier">login</span>, <span class="ruby-identifier">senha</span>, <span class="ruby-identifier">nome</span>, <span class="ruby-identifier">perfil</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">existe_usuario?</span>(<span class="ruby-identifier">login</span>)
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;Usuario ja existente.&#39;</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">disciplinas</span> = []
+    <span class="ruby-identifier">num_usuarios</span> = <span class="ruby-identifier">gerarID</span>    
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;usuarios.txt&#39;</span>, <span class="ruby-string">&#39;a+&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-node">&quot;#{num_usuarios}\t#{login}\t#{senha}\t#{nome}\t&quot;</span>                  <span class="ruby-node">&quot;#{perfil}\t#{disciplinas}\n&quot;</span>)
+    <span class="ruby-keyword">end</span>  
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-existe_usuario-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">existe_usuario?</span><span
+            class="method-args">(login)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="existe_usuario-3F-source">
+            <pre><span class="ruby-comment"># File Autenticacao.rb, line 2</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">existe_usuario?</span>(<span class="ruby-identifier">login</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-string">&#39;usuarios.txt&#39;</span>)
+    <span class="ruby-identifier">lines</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-string">&#39;usuarios.txt&#39;</span>)
+    <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">info</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">split</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">login</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">info</span>[<span class="ruby-value">1</span>]
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-gerarID" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">gerarID</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="gerarID-source">
+            <pre><span class="ruby-comment"># File Autenticacao.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">gerarID</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-string">&#39;usuarios.txt&#39;</span>)
+    <span class="ruby-identifier">num_usuarios</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-string">&#39;usuarios.txt&#39;</span>).<span class="ruby-identifier">size</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">num_usuarios</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">num_usuarios</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-logar" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">logar</span><span
+            class="method-args">(log, pass)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recebe o login do usuario e senha Testa se o arquivo de lista de usuarios
+existe testa se o usuario esta presente na lista Se o usuario e a senha
+forem encontrados, os dados do usuario sao lidos do arquivo do usuario para
+a memoria do programa e retorna true Caso contrario, retorna false</p>
+          
+          
+
+          
+          <div class="method-source-code" id="logar-source">
+            <pre><span class="ruby-comment"># File Autenticacao.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">logar</span>(<span class="ruby-identifier">log</span>, <span class="ruby-identifier">pass</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-string">&#39;usuarios.txt&#39;</span>)
+    <span class="ruby-identifier">lines</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-string">&#39;usuarios.txt&#39;</span>)
+    <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">info</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">split</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">log</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">info</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">pass</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">info</span>[<span class="ruby-value">2</span>]
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value">0</span>]
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">login</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value">1</span>]
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nome</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value">3</span>]
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">perfil</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value">4</span>]
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">disciplinas</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value">5</span>]
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://rdoc.github.io/rdoc">RDoc</a> 5.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
